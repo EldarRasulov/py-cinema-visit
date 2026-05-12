@@ -1,15 +1,16 @@
-from typing import List, Dict
+from typing import Dict, List
+
 from app.cinema.bar import CinemaBar
 from app.cinema.hall import CinemaHall
-from app.people.customer import Customer
 from app.people.cinema_staff import Cleaner
+from app.people.customer import Customer
 
 
 def cinema_visit(
-    movie: str,
     customers: List[Dict[str, str]],
     hall_number: int,
-    cleaner: str
+    cleaner: str,
+    movie: str
 ) -> None:
     customer_objects = []
 
@@ -26,8 +27,9 @@ def cinema_visit(
             customer=customer_instance
         )
 
-    hall = CinemaHall(hall_number)
-    cleaner_instance = Cleaner(cleaner)
+    hall = CinemaHall(number=hall_number)
+
+    cleaner_instance = Cleaner(name=cleaner)
 
     hall.movie_session(
         movie_name=movie,
